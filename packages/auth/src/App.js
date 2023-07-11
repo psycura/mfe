@@ -8,13 +8,17 @@ import SignIn from "./components/Signin";
 const generateClassname = createGenerateClassName({
   productionPrefix: 'au'
 });
-export default ({history}) => {
+export default ({history, onSignIn}) => {
   return <div>
     <StylesProvider generateClassName={generateClassname}>
       <Router history={history}>
         <Switch>
-          <Route path="/auth/signup" component={SignUp}/>
-          <Route path="/auth/signin" component={SignIn}/>
+          <Route path="/auth/signup">
+            <SignUp onSignIn={onSignIn}/>
+          </Route>
+          <Route path="/auth/signin">
+            <SignIn onSignIn={onSignIn}/>
+          </Route>
         </Switch>
       </Router>
     </StylesProvider>
